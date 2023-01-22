@@ -61,13 +61,18 @@ def gen_unit_vector(vector):
      mag = np.sqrt(np.dot(vector,vector))
      return vector/mag
      
-
+# Fixed parameters
+# v_mag sets the speed of all three snails.
+# scale sets the side length of the triangle.
 v_mag = 5
 scale = 20
-A = Snail(r = np.array([0.5*scale,0]),v=np.array([0,0]),m=1)
-B = Snail(r = np.array([-0.5*scale,0]),v=np.array([0,0]),m=1)
-C = Snail(r = np.array([0,np.sqrt(0.75)*scale]),v=np.array([0,0]),m=1)
 
+#Initialize the three snails.
+A = Snail(r = np.array([0.5*scale,0]),vel=np.array([0,0]),m=1)
+B = Snail(r = np.array([-0.5*scale,0]),vel=np.array([0,0]),m=1)
+C = Snail(r = np.array([0,np.sqrt(0.75)*scale]),vel=np.array([0,0]),m=1)
+
+#Create arrays to save positions.
 pos_A_x = []
 pos_A_y = []
 
@@ -77,7 +82,7 @@ pos_B_y = []
 pos_C_x = []
 pos_C_y = []
 
-
+#Loop over small time steps to incriment positions and (direction of) velocity.
 dt = 1e-6
 for i in range(0,10000):
     r_AB = gen_unit_vector(B.get_pos() - A.get_pos())
@@ -109,10 +114,13 @@ for i in range(0,10000):
     pos_C_x.append(X_c[0])
     pos_C_y.append(X_c[1])
 
+
+# Arrays to draw triangle.
 x_1 = np.arange(-scale*0.5,scale*0.5,0.001)
 x_2 = np.arange(-scale*0.5,0,0.001)
 x_3 = np.arange(0,scale*0.5,0.001)
 
+# Plot output.
 fig, ax = plt.subplots()
 ax.scatter(pos_A_x,pos_A_y,color='red',label="Snail A")
 ax.scatter(pos_B_x,pos_B_y,color='blue',label="Snail B")
@@ -129,5 +137,6 @@ ax.set_ylabel("y-coordinate")
 x0,x1 = ax.get_xlim()
 y0,y1 = ax.get_ylim()
 ax.set_aspect(abs(x1-x0)/abs(y1-y0))
+plt.savefig("spiral_solution")
 plt.show()
 
