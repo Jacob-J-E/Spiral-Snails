@@ -5,9 +5,28 @@ import matplotlib.pyplot as plt
 
 class Snail:
 
-    def __init__(self,r=np.array([0,0]),v=np.array([0,0]),m=1):
+    """
+    Class to initialize snail object
+
+    Attributes:
+        - r is the position specified as a 2D vector numpy array.
+        - vel is the velocity specified as a 2D vector numpy array.
+        - m is the mass of the snail
+
+    Methods:
+        - get_pos() returns the position of the snail as a 2D numpy array.
+        - get_vel() returns the velocity of the snail as a 2D numpy array.
+        - get_mass() returns the mass of the snail.
+        - set_pos(r) sets the position of the snail with input r, a 2D numpy array.
+        - set_vel(v) sets the velocity of the snail with input v, a 2D numpy array.
+        - momentum() returns magnitude of snail's momentum.
+        - kinetic_energy() returns the kinetic energy of the snail.
+        - move(dt) moves the snail by v*dt with float input dt. 
+    """
+
+    def __init__(self,r=np.array([0,0]),vel=np.array([0,0]),m=1):
         self.r = np.array(r).astype(float)
-        self.vel = np.array(v).astype(float)
+        self.vel = np.array(vel).astype(float)
         self.mass= float(m)
 
     def get_pos(self):
@@ -49,12 +68,6 @@ A = Snail(r = np.array([0.5*scale,0]),v=np.array([0,0]),m=1)
 B = Snail(r = np.array([-0.5*scale,0]),v=np.array([0,0]),m=1)
 C = Snail(r = np.array([0,np.sqrt(0.75)*scale]),v=np.array([0,0]),m=1)
 
-CB_vec = C.get_pos() - B.get_pos()
-
-# x_a = A.get_pos()
-# x_b = B.get_pos()
-# x_c = C.get_pos()
-
 pos_A_x = []
 pos_A_y = []
 
@@ -63,7 +76,6 @@ pos_B_y = []
  
 pos_C_x = []
 pos_C_y = []
-
 
 
 dt = 1e-6
@@ -119,14 +131,3 @@ y0,y1 = ax.get_ylim()
 ax.set_aspect(abs(x1-x0)/abs(y1-y0))
 plt.show()
 
-
-
-# plt.scatter(*x_a,color='red')
-# plt.scatter(*x_b,color='red')
-# plt.scatter(*x_c,color='red')
-
-# plt.scatter(*X_a,color='blue')
-# plt.scatter(*X_b,color='blue')
-# plt.scatter(*X_c,color='blue')
-
-# plt.show()
