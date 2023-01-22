@@ -78,6 +78,6 @@ ax.set_ylabel("y-coordinate")
 x0,x1 = ax.get_xlim()
 y0,y1 = ax.get_ylim()
 ax.set_aspect(abs(x1-x0)/abs(y1-y0))
-plt.savefig("spiral_solution")
+plt.savefig("plots/spiral_solution")
 plt.show()
 

@@ -121,6 +121,6 @@ ax.scatter(pos_D_x,pos_D_y,pos_D_z,color='black',label="Snail D")
 # x0,x1 = ax.get_xlim()
 # y0,y1 = ax.get_ylim()
 # ax.set_aspect(abs(x1-x0)/abs(y1-y0))
-# plt.savefig("spiral_solution")
+plt.savefig("plots/3D_triangular_pyrimad")
 plt.show()
 
